@@ -1,0 +1,71 @@
+/* styles.css */
+
+body {
+  display: flex;
+  background-color:black;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: aqua;
+  font-weight: 300;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-gap: 30px;
+
+}
+
+.card {
+  border-radius: 15px;
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  cursor: pointer;
+  position: relative;
+  margin: 0vmax;
+}
+
+.card .front,
+.card .back {
+  position: absolute;
+  transition: transform 0.7s;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+ 
+}
+
+.card .front {
+  background-color:aqua;
+  transform: rotateY(180deg);
+  
+}
+
+.card .back {
+  background-color:aquamarine ;
+}
+
+.card.flipped-card .front {
+  transform: rotateY(0);
+  
+}
+
+.card.flipped-card .back {
+  transform: rotateY(180deg);
+}
