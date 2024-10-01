@@ -2,16 +2,15 @@
 
 body {
   display: flex;
-  background-color:black;
+  background-color: black;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100vw;
   font-family: Arial, sans-serif;
   overflow-x: hidden;
-  padding: 0px;
-  margin: 0px;
- 
+  padding: 0;
+  margin: 0;
 }
 
 h1 {
@@ -23,10 +22,8 @@ h1 {
 
 .game-board {
   display: grid;
-  grid-template-columns: repeat(4, 100px);
+  grid-template-columns: repeat(8, 100px); 
   grid-gap: 30px;
-  
-
 }
 
 .card {
@@ -54,60 +51,50 @@ h1 {
   align-items: center;
   justify-content: center;
   backface-visibility: hidden;
- 
 }
 
 .card .front {
-  background-color:aqua;
+  background-color: aqua;
   transform: rotateY(180deg);
-  
 }
 
 .card .back {
-  background-color:aquamarine ;
+  background-color: aquamarine;
 }
 
 .card.flipped-card .front {
   transform: rotateY(0);
-  
 }
 
 .card.flipped-card .back {
   transform: rotateY(180deg);
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   body {
     padding-bottom: 50px;
   }
 
   h1 {
     margin-top: 50px;
-    
   }
-  
+
   .game-board {
-    height: calc(100% - 150px);
-    grid-template-columns: repeat(3, 100px);
+    grid-template-columns: repeat(4, 100px); 
     grid-gap: 30px;
-    
-  
   }
-  
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 480px) {
   body {
-    height: normal;
+    height: auto;
     padding-bottom: 70px;
   }
+
   .game-board {
-   
-    grid-template-columns: repeat(2, 100px);
+    grid-template-columns: repeat(2, 100px); 
     grid-gap: 30px;
-    
   }
-  
 }
 
 .popup {
@@ -142,5 +129,3 @@ button {
 button:hover {
   background-color: #218838;
 }
-
-

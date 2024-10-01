@@ -1,13 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
     const gameBoard = document.getElementById('gameBoard');
-    const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
     const cards = [];
     let card1 = null;
     let card2 = null;
     let isLocked = false;
     let matchedPairs = 0;
     const totalPairs = letters.length;
-    
+
+    let startTime;
+    let timerInterval;
+
+    // Timer start logic
+    function startTimer() {
+        startTime = new Date();
+        timerInterval = setInterval(() => {
+            const currentTime = new Date();
+            const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+            const hours = Math.floor(elapsedTime / 3600);
+            const minutes = Math.floor((elapsedTime % 3600) / 60);
+            const seconds = elapsedTime % 60;
+
+            document.getElementById('timer').textContent = `Time: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }, 1000);
+    }
+
+    // Timer stop logic
+    function stopTimer() {
+        clearInterval(timerInterval);
+    }
+
     const congratsPopup = document.createElement('div');
     congratsPopup.id = 'congratsPopup';
     congratsPopup.classList.add('popup');
@@ -19,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>`;
     document.body.appendChild(congratsPopup);
 
-    // Add event listener for "Play Again" button
     document.getElementById('playAgain').addEventListener('click', resetGame);
 
     for (let i = 0; i < 2; i++) {
@@ -77,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resettingGame();
         if (matchedPairs === totalPairs) {
             setTimeout(showCongratsMessage, 500);
+            stopTimer(); 
         }
     }
 
@@ -106,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = addCard(x);
             gameBoard.appendChild(card);
         });
+        startTimer(); 
     }
 
     initialiseGame();
